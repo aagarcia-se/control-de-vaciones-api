@@ -1,0 +1,30 @@
+import { Router } from "express";
+import { getDepartamentosController } from "../../controllers/departamentos/departamentos.controller.js";
+import { getMunicipiosController } from "../../controllers/municipios/municipios.Controller.js";
+import { getComunidadesLinguisticasController } from "../../controllers/ComunidadesLinguisticas/comunidadesLinguisticas.controller.js";
+import { getDiscapacidadesController } from "../../controllers/discapacidades/discapacidades.controllers.js";
+import { getestadoCivilController } from "../../controllers/estadoCivil/estadoCivil.controller.js";
+import { getGeneroController } from "../../controllers/genero/genero.controller.js";
+import { getNivelEducativoController } from "../../controllers/nivelEducativo/nivelEducativo.controller.js";
+import { getParentescoController } from "../../controllers/parentesco/parentesco.controller.js";
+import { getPuebloPertenecienteController } from "../../controllers/puebloPerteneciente/puebloPerteneciente.controller.js";
+import { getPuestosController } from "../../controllers/puestos/puestos.controller.js";
+import { getReligionesController } from "../../controllers/religiones/religiones.controller.js";
+import { getRenglonesController } from "../../controllers/renglones/renglones.controller.js";
+import { getUnidadesController } from "../../controllers/unidades/unidades.controller.js";
+
+export const catalogosRoute = Router();
+
+catalogosRoute.get('/comunidadLinguistica', getComunidadesLinguisticasController);
+catalogosRoute.get('/departamentos', getDepartamentosController);
+catalogosRoute.get('/discapacidades', getDiscapacidadesController);
+catalogosRoute.get('/estadoCivil', getestadoCivilController);
+catalogosRoute.get('/genero', getGeneroController);
+catalogosRoute.get('/municipios', getMunicipiosController);
+catalogosRoute.get('/nivelEducativo', getNivelEducativoController);
+catalogosRoute.get('/parentesco', getParentescoController);
+catalogosRoute.get('/puebloPerteneciente', getPuebloPertenecienteController);
+catalogosRoute.get('/puestos', getPuestosController);
+catalogosRoute.get('/religiones', getReligionesController);
+catalogosRoute.get('/renglonesPresupuestarios', getRenglonesController);
+catalogosRoute.get('/unidades', getUnidadesController);
