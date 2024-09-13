@@ -7,7 +7,7 @@ export const obtenerFamiliaresDao = async (idEmpleado) => {
     dbConnection = await OpenConection();
     await dbConnection.beginTransaction();
 
-    const query = `select idInfoPersonal, nombreFamiliar,
+    const query = `select idFamiliar, idInfoPersonal, nombreFamiliar,
                     telefono, parentesco, fechaNacimiento
                     from familiaresDeEmpleados
                     where idInfoPersonal = ?; 
@@ -18,7 +18,7 @@ export const obtenerFamiliaresDao = async (idEmpleado) => {
     if (familiares.length === 0) {
       throw {
         codRes: 409,
-        message: "NO EXISTEN FAMILIARES PARA EL EMPLEADO INGRESADO",
+        message: "NO EXISTEN FAMILIARES...",
       };
     } else {
       return familiares;
