@@ -1,14 +1,14 @@
-import { obtenerInfoDPIServices } from "../../Services/DPI/GetDatosCUi.services.js";
+import { obtenerNivelEducativoInfoSerices } from "../../Services/nivelEducativo/GetNivelEducativo.service.js";
 
 
-export const obtenerInfoDPIController = async (req, res) => {
-    const { idDpi } = req.params; 
+export const obtenerNivelEducativoInfoController = async (req, res) => {
+    const { idInfoPersonal } = req.params; 
     try {
-        const dpiData = await obtenerInfoDPIServices(idDpi);
+        const nivelEducativoInf = await obtenerNivelEducativoInfoSerices(idInfoPersonal);
         const responseData = {
             status: 200,
             message: "Data encontra correctamente",
-            dpiData
+            nivelEducativoInf
         };
         res.status(200).json(responseData);
         

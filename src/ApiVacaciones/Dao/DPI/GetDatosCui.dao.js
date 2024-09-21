@@ -2,7 +2,7 @@ import { CloseConection, OpenConection } from "../Connection/ConexionV.dao.js";
 
 let dbConnection;
 
-export const obtenerInfoDPIDao = async (idEmpleado) => {
+export const obtenerInfoDPIDao = async (idDpi) => {
   try {
     dbConnection = await OpenConection();
     await dbConnection.beginTransaction();
@@ -13,7 +13,7 @@ export const obtenerInfoDPIDao = async (idEmpleado) => {
                     where idDPi = ?;
                       `;
 
-    const [dpiData] = await dbConnection.query(query, [idEmpleado]);
+    const [dpiData] = await dbConnection.query(query, [idDpi]);
     if (dpiData.length === 0) {
       throw {
         codRes: 409,

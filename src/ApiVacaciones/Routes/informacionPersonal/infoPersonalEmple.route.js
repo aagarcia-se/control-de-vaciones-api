@@ -5,4 +5,4 @@ import { obtenerInfoPersonalController } from "../../Controller/informacionPerso
 export const infoEmpleRoute = Router();
 
 infoEmpleRoute.post('/infoPersonalEmpleado', IngresarInfoPersonalController);
-infoEmpleRoute.get('/obtenerInfoPersonal/:idEmpleado', obtenerInfoPersonalController);
+infoEmpleRoute.get('/obtenerInfoPersonal/:idInfoPersonal', obtenerInfoPersonalController);

@@ -2,7 +2,8 @@ import { CloseConection, OpenConection } from "../Connection/ConexionV.dao.js";
 
 let dbConnection;
 
-export const obtenerInfoPersonalDao = async (idEmpleado) => {
+export const obtenerInfoPersonalDao = async (idInfoPersonal) => {
+  console.log(idInfoPersonal)
   try {
     dbConnection = await OpenConection();
     await dbConnection.beginTransaction();
@@ -12,10 +13,10 @@ export const obtenerInfoPersonalDao = async (idEmpleado) => {
                     numeroCelular, correoPersonal, direccionResidencia, estadoCivil, genero,
                     nit, numAfiliacionIgss, fechaNacimiento
                     from infoPersonalEmpleados
-                    where idDpi = ?;
+                    where idInfoPersonal = ?;
                       `;
 
-    const [infoPersonal] = await dbConnection.query(query, [idEmpleado]);
+    const [infoPersonal] = await dbConnection.query(query, [idInfoPersonal]);
     if (infoPersonal.length === 0) {
       throw {
         codRes: 409,

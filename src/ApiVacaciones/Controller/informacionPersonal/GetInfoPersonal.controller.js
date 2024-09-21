@@ -2,9 +2,9 @@ import { obtenerInfoPersonalServices } from "../../Services/informacionPersonal/
 
 
 export const obtenerInfoPersonalController = async (req, res) => {
-    const { idEmpleado } = req.params; 
+    const { idInfoPersonal } = req.params; 
     try {
-        const infoPersonal = await obtenerInfoPersonalServices(idEmpleado);
+        const infoPersonal = await obtenerInfoPersonalServices(idInfoPersonal);
         const responseData = {
             status: 200,
             message: "Data encontra",

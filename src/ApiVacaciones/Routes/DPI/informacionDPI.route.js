@@ -5,4 +5,4 @@ import { obtenerInfoDPIController } from "../../Controller/DPI/GetDatosCui.contr
 export const dpiRoute = Router();
 
 dpiRoute.post('/ingresarInfDpi', IngresarInfoDpiController);
-dpiRoute.get('/infoDpi/:idEmpleado', obtenerInfoDPIController);
+dpiRoute.get('/infoDpi/:idDpi', obtenerInfoDPIController);
