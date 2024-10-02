@@ -1,4 +1,4 @@
-import { employeesListDao } from "../../Dao/empleados/GetDataEmpleados.dao.js";
+import { employeesListDao, obtenerDatosLaboralesDao } from "../../Dao/empleados/GetDataEmpleados.dao.js";
 
 export const employeesListServices = async () => {
     try{
@@ -9,3 +9,14 @@ export const employeesListServices = async () => {
  
     }
   }
+
+
+  export const obtenerDatosLaboralesServices = async (idInfoPersonal) => {
+      try{
+            const datosLaborales = await obtenerDatosLaboralesDao(idInfoPersonal);
+            return datosLaborales;
+      }catch(error){
+         throw error;
+   
+      }
+    }

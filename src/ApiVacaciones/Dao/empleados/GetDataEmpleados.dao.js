@@ -76,3 +76,40 @@ export const employeesListDao = async () => {
     }
   }
 };
+
+
+
+export const obtenerDatosLaboralesDao = async (idInfoPersonal) => {
+  try {
+    dbConnection = await OpenConection();
+    await dbConnection.beginTransaction();
+
+    const query = `select idEmpleado, puesto, salario, fechaIngreso, 
+                    correoInstitucional, extensionTelefonica, 
+                    unidad, renglon, observaciones, coordinacion, tipoContrato,
+                    numeroCuentaCHN, numeroContrato, numeroActa,
+                    numeroAcuerdo
+                    from empleados
+                    where idInfoPersonal = ?;
+                      `;
+
+    const [datosLaborales] = await dbConnection.query(query, [idInfoPersonal]);
+    if (datosLaborales.length === 0) {
+      throw {
+        codRes: 409,
+        message: "NO EXISTE EMPLEADO CON EL ID INGRESADO",
+      };
+    } else {
+      return datosLaborales[0];
+    }
+  } catch (error) {
+    throw error;
+  } finally {
+    if (dbConnection) {
+      await CloseConection(dbConnection);
+    }
+  }
+};
+
+
+
