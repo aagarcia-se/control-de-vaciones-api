@@ -9,6 +9,7 @@ import { pertenenciaSoLiRoute } from "./ApiVacaciones/Routes/pertenenciaSociolin
 import { datosMedicosRoute } from "./ApiVacaciones/Routes/datosMedicos/datosMedicos.route.js";
 import { empleadosRoute } from "./ApiVacaciones/Routes/empleados/empleados.routes.js";
 import { loginRout } from "./ApiVacaciones/Routes/login/login.route.js";
+import { diasFestivos } from "./ApiVacaciones/Routes/DiasFestivos/DiasFestivos.routes.js";
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 
 //catalogos.
 app.use('/api/', catalogosRoute);
+app.use('/api/', diasFestivos);
 
 //acciones
 app.use('/api/', dpiRoute);
