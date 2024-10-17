@@ -3,7 +3,6 @@ import { CloseConection, OpenConection } from "../Connection/ConexionV.dao.js";
 let dbConnection;
 
 export const obtenerInfoPersonalDao = async (idInfoPersonal) => {
-  console.log(idInfoPersonal)
   try {
     dbConnection = await OpenConection();
     await dbConnection.beginTransaction();

@@ -9,7 +9,7 @@ export const getLoginDataDao = async (data) =>{
         await dbConnection.beginTransaction();
         const query = `select dp.idDpi, ip.idInfoPersonal,  em.idEmpleado, 
                         ip.primerNombre, ip.primerApellido, dp.numeroDocumento, 
-                        us.usuario, us.idRol 
+                        us.usuario, us.idRol, em.unidad
                         from usuarios us, dpiEmpleados dp, infoPersonalEmpleados ip, empleados em 
                         where dp.idDpi = ip.idDpi 
                         and ip.idInfoPersonal = em.idInfoPersonal 
