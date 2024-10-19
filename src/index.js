@@ -10,6 +10,7 @@ import { datosMedicosRoute } from "./ApiVacaciones/Routes/datosMedicos/datosMedi
 import { empleadosRoute } from "./ApiVacaciones/Routes/empleados/empleados.routes.js";
 import { loginRout } from "./ApiVacaciones/Routes/login/login.route.js";
 import { diasFestivos } from "./ApiVacaciones/Routes/DiasFestivos/DiasFestivos.routes.js";
+import { VacationAppRoute } from "./ApiVacaciones/Routes/VacationApp/VacationApp.routes.js";
 
 
 const app = express();
@@ -28,7 +29,9 @@ app.use('/api/', nivelEducativoRoute);
 app.use('/api/', pertenenciaSoLiRoute);
 app.use('/api/', datosMedicosRoute);
 app.use('/api/', empleadosRoute);
+app.use('/api/', VacationAppRoute);
 app.use('/api/', loginRout);
+
 
 
 

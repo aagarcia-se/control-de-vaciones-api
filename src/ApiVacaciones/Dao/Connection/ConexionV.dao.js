@@ -18,7 +18,10 @@ export const OpenConection = async () => {
     } catch (error) {
         console.error('Error al establecer la conexión:', error.sqlMessage);
         // Realizar acciones de manejo de errores, como enviar una respuesta de error al cliente
-        throw error;
+        throw {
+            codRes: 500,
+            message: "ERROR EN EL SERVICIO, INTENTE MAS TARDE",
+          };
     }
 };
 
