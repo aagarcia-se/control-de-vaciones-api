@@ -1,5 +1,5 @@
 import { getSolicitudesByIdDao } from "../../Dao/VacationApp/GetSolicitudById.Dao.js";
-import { eliminarSolicitudDao, IngresarSolicitudDao } from "../../Dao/VacationApp/ModificarSolicitud.Dao.js";
+import { actualizarEstadoSolicitudDao, eliminarSolicitudDao, IngresarSolicitudDao } from "../../Dao/VacationApp/ModificarSolicitud.Dao.js";
 
 
 export const IngresarSolicitudService = async (data) => {
@@ -17,6 +17,16 @@ export const IngresarSolicitudService = async (data) => {
             const result = await IngresarSolicitudDao(data);
             return result;
         }
+        throw error; // Mantener el throw para que el error se propague
+    }
+};
+
+
+export const actualizarEstadoSolicitudService = async (data) => {
+    try {
+        const result = await actualizarEstadoSolicitudDao(data);
+        return result;
+    } catch (error) {
         throw error; // Mantener el throw para que el error se propague
     }
 };

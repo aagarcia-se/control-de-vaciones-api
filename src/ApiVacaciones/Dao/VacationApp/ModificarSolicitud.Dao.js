@@ -45,3 +45,23 @@ export const eliminarSolicitudDao = async (idSolicitud) => {
 
 }
 
+export const actualizarEstadoSolicitudDao = async (data) => {
+    console.log(data)
+    let Connection;
+    try{
+        Connection = await OpenConection();
+        const [result] = await Connection.query(`UPDATE solicitudes_vacaciones 
+                                                    SET estadoSolicitud = ? 
+                                                    WHERE idSolicitud = ? 
+                                                    AND idEmpleado = ?;`, 
+            [data.estadoSolicitud, data.idSolicitud, data.idEmpleado]);
+            await Connection.commit();
+        return result.changedRows;
+    }catch(error){
+        throw error;
+    }finally{
+        CloseConection(Connection);
+    }
+
+}
+

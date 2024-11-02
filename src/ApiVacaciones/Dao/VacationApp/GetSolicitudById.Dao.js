@@ -12,8 +12,8 @@ export const getSolicitudesByIdDao = async (idEmpleado, idInfoPersonal) => {
                     cantidadDiasSolicitados, estadoSolicitud, fechaSolicitud,
                     coordinadorResolucion, fechaResolucion, descripcionRechazo 
                     from solicitudes_vacaciones
-                    where idEmpleado = 6
-                    and idInfoPersonal = 8
+                    where idEmpleado = ?
+                    and idInfoPersonal = ?
                     and estado = 'A' 
                     order by idSolicitud desc
                     limit 1;
