@@ -6,26 +6,24 @@ import {
   diasHastaFinDeAnio,
   diasIngresoHastaDiaEnCurso,
   GenerarPeriodo,
+  obtenerDiasPorAnio,
 } from "../../Utils/DateUtils.js";
 
 /**
- * Calcula el número total de días acumulados en un año atrasado completo,
- * dado un año de ingreso y el año actual.
+ * Calcula los días acumulados completos del año anterior.
  *
- * Esta función toma el año en que ocurrió el ingreso y el año actual,
- * y calcula la cantidad total de días acumulados basándose en la suposición
- * de que hay 20 días acumulados por año.
+ * Esta función toma como entrada el número de días de un año (`diasPorAnio`)
+ * y calcula el total de días acumulados redondeados a un número entero,
+ * basado en el porcentaje (20/365) del año.
  *
- * @param {number} anioIngreso - El año en que ocurrió el ingreso.
- * @param {number} anioEnCurso - El año actual.
- * @returns {number} El número total de días acumulados por los años completos (365 dias)
- *                   transcurridos desde el año de ingreso hasta el año actual.
+ * @param {number} diasPorAnio - El número total de días en el año.
+ * @returns {number} El total de días acumulados redondeados.
  *
  * @example
- * // Supongamos que el año de ingreso es 2022 y el año actual es 2024
- * getDiasAcumuladosAnioAtrasadoCompleto(2022, 2024); // returns 40
+ * const diasAcumulados = getDiasAcumuladosAnioAtrasadoCompleto(365);
+ * console.log(diasAcumulados); // 20
  */
-const getDiasAcumuladosAnioAtrasadoCompleto = (anioIngreso, anioEnCurso) => {
+const getDiasAcumuladosAnioAtrasadoCompleto = (diasPorAnio) => {
   let contadorDiasAcuPorAnio = 0;
 
   contadorDiasAcuPorAnio = Math.round((diasPorAnio * 20) / 365);
@@ -413,7 +411,7 @@ export const calcularDiasPorPeriodo = (historial, diasSolicitados) => {
   }
 
   return resultado; // Retornar el detalle de los periodos con los días tomados
-}
+};
 
 /**
  * Calcula los días tomados de cada periodo y los días restantes después de cubrir una solicitud de vacaciones.
@@ -447,9 +445,9 @@ export const calcularDiasPorPeriodo = (historial, diasSolicitados) => {
  * //   ]
  * // }
  */
-export const  obtenerPeriodosParaVacaciones = (historial, diasSolicitados) => {
+export const obtenerPeriodosParaVacaciones = (historial, diasSolicitados) => {
   const periodosConDias = historial
-    .filter(item => item.diasDisponibles > 0)
+    .filter((item) => item.diasDisponibles > 0)
     .sort((a, b) => parseInt(a.periodo) - parseInt(b.periodo));
 
   const resultado = [];
@@ -464,14 +462,14 @@ export const  obtenerPeriodosParaVacaciones = (historial, diasSolicitados) => {
       resultado.push({
         periodo: periodo.periodo,
         diasTomados: diasRestantes,
-        diasDisponibles: periodo.diasDisponibles - diasRestantes
+        diasDisponibles: periodo.diasDisponibles - diasRestantes,
       });
       diasRestantes = 0;
     } else {
       resultado.push({
         periodo: periodo.periodo,
         diasTomados: periodo.diasDisponibles,
-        diasDisponibles: 0
+        diasDisponibles: 0,
       });
       diasRestantes -= periodo.diasDisponibles;
     }
@@ -481,13 +479,13 @@ export const  obtenerPeriodosParaVacaciones = (historial, diasSolicitados) => {
     return {
       mensaje: "No hay suficientes días disponibles para cubrir la solicitud.",
       diasPosibles: diasTotalesDisponibles,
-      periodos: historial.map(periodo => ({
+      periodos: historial.map((periodo) => ({
         periodo: periodo.periodo,
         diasTomados: 0,
-        diasDisponibles: periodo.diasDisponibles
-      }))
+        diasDisponibles: periodo.diasDisponibles,
+      })),
     };
   }
 
   return resultado;
-}
+};

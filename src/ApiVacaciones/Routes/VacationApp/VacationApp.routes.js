@@ -3,6 +3,7 @@ import { getSolicitudesByIdController } from "../../Controller/VacationApp/GetSo
 import { actualizarEstadoSolicitudConroller, IngresarSolicitudController } from "../../Controller/VacationApp/ModificarSolicitud.controller.js";
 import { getSolicitudesController } from "../../Controller/VacationApp/GetSolicitudes.Controller.js";
 import { acreditarDiasPorPeriodoController } from "../../Controller/VacationApp/HisotoriaVacaciones/ControlDeDias.controller.js";
+import { obtenerHistorialPorEmpleadoController } from "../../Controller/VacationApp/HisotoriaVacaciones/ConsultasHistorial.controller.js";
 
 export const VacationAppRoute = Router();
 
@@ -12,3 +13,4 @@ VacationAppRoute.post('/ingresarSolicitudVacaciones', IngresarSolicitudControlle
 VacationAppRoute.get('/solicitudes', getSolicitudesController);
 VacationAppRoute.put('/UpdateEstadoSolicitud', actualizarEstadoSolicitudConroller);
 VacationAppRoute.post('/acreditarDias', acreditarDiasPorPeriodoController);
+VacationAppRoute.get('/getHistorial', obtenerHistorialPorEmpleadoController);

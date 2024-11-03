@@ -2,6 +2,7 @@ import { actualizarEstadoSolicitudService, IngresarSolicitudService } from "../.
 
 
 export const IngresarSolicitudController = async (req, res) => {
+    console.log(req.body)
     try{
         const idSolicitud = await IngresarSolicitudService(req.body);
         const responseData = {

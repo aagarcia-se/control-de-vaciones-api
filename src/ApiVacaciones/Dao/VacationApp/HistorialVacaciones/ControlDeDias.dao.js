@@ -143,7 +143,7 @@ export const getUltiaAcreditacionDiasDao = async (idEmpleado) => {
     if (ultimoIngreso.length === 0) {
       return 0;
     } else {
-      return ultimoIngreso[0];
+      return  [0];
     }
   } catch (error) {
     throw error;
