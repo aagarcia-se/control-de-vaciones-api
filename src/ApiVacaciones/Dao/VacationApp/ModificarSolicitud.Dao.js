@@ -46,7 +46,6 @@ export const eliminarSolicitudDao = async (idSolicitud) => {
 }
 
 export const actualizarEstadoSolicitudDao = async (data) => {
-    console.log(data)
     let Connection;
     try{
         Connection = await OpenConection();

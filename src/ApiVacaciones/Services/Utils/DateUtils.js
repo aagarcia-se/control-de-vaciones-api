@@ -220,3 +220,9 @@ export const validarFechaUltimaActualizacion = (fechaActualizacion) => {
 export const formatearFecha = (fecha) => {
   return dayjs(fecha).format("YYYY-MM-DD");
 };
+
+
+//Formatear fecha formato DD/MM/YYYY
+export const formatDateToDisplay = (date) => {
+  return dayjs(date).format("DD/MM/YYYY");
+}
