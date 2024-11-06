@@ -9,7 +9,6 @@ import {
 } from "../../Dao/VacationApp/ModificarSolicitud.Dao.js";
 import { GenerarPlantillasCorreos } from "../../PlantillasCorreos/plantilas.js";
 import { EnviarMailAutorizacionDeVacaciones } from "../email/EnvioEmailVacacionesAutorizadas.service.js";
-import { bufferToPdfBlob } from "../PDFGenerator/ConvertBlob.js";
 import { generateVacationRequestPDF } from "../PDFGenerator/PDFGenerator.service.js";
 
 export const IngresarSolicitudService = async (data) => {

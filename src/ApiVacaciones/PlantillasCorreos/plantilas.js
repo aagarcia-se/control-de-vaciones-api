@@ -62,7 +62,7 @@ const plantillaAutorizacionDeVacaciones = (data) => {
                         <p>Nos complace informarle que su solicitud de vacaciones ha sido autorizada. A continuación se detallan los datos correspondientes:</p>
                         <div class="info"><strong>Fecha de Inicio:</strong> ${formatDateToDisplay(data.fechaInicioVacaciones)} </div>
                         <div class="info"><strong>Fecha Fin:</strong> ${formatDateToDisplay(data.fechaFinVacaciones)}</div>
-                        <div class="info"><strong>Día de Reintegro:</strong> ${formatDateToDisplay(data.fechaRetornoLaboral)}</div>
+                        <div class="info"><strong>Día de Reintegro:</strong> ${formatDateToDisplay(data.fechaRetornoLabores)}</div>
                         <div class="info"><strong>Días a Tomar:</strong> ${data.cantidadDiasSolicitados}</div>
                         <p>Si tiene alguna duda o necesita asistencia adicional, no dude en contactarnos.</p>
                         </div>
