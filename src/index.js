@@ -11,6 +11,7 @@ import { empleadosRoute } from "./ApiVacaciones/Routes/empleados/empleados.route
 import { loginRout } from "./ApiVacaciones/Routes/login/login.route.js";
 import { diasFestivos } from "./ApiVacaciones/Routes/DiasFestivos/DiasFestivos.routes.js";
 import { VacationAppRoute } from "./ApiVacaciones/Routes/VacationApp/VacationApp.routes.js";
+import { reportsRoute } from "./ApiVacaciones/Routes/Reports/Reports.routes.js";
 
 
 const app = express();
@@ -33,6 +34,8 @@ app.use('/api/', VacationAppRoute);
 app.use('/api/', loginRout);
 
 
+//Reportes
+app.use('/api/', reportsRoute);
 
 
 app.listen(3000, () => {
