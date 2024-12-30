@@ -13,7 +13,7 @@ export const vacacionesReportDao = async (unidad) => {
                       '', inf.primerApellido, ' ' , inf.segundoApellido) as Nombre,
                       sv.unidadSolicitud, sv.fechaInicioVacaciones, sv.fechaFinVacaciones,
                       sv.fechaRetornoLabores, sv.cantidadDiasSolicitados, sv.estadoSolicitud,
-                      sv.fechaSolicitud, sv.coordinadorResolucion as cordinadorAprobo,
+                      sv.fechaSolicitud, sv.coordinadorResolucion as coordinadorAprobo,
                       sv.fechaResolucion as fechaAutorizacion, sv.descripcionRechazo, 
                       sv.fechaSolicitud
                       from solicitudes_vacaciones sv,

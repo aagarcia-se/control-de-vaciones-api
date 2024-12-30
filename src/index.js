@@ -12,6 +12,7 @@ import { loginRout } from "./ApiVacaciones/Routes/login/login.route.js";
 import { diasFestivos } from "./ApiVacaciones/Routes/DiasFestivos/DiasFestivos.routes.js";
 import { VacationAppRoute } from "./ApiVacaciones/Routes/VacationApp/VacationApp.routes.js";
 import { reportsRoute } from "./ApiVacaciones/Routes/Reports/Reports.routes.js";
+import { suspensionesRoute } from "./ApiVacaciones/Routes/Suspensiones/Suspensiones.routes.js";
 
 
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/', datosMedicosRoute);
 app.use('/api/', empleadosRoute);
 app.use('/api/', VacationAppRoute);
 app.use('/api/', loginRout);
+app.use('/api/', suspensionesRoute);
 
 
 //Reportes
