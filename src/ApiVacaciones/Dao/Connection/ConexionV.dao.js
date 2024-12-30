@@ -20,7 +20,7 @@ export const OpenConection = async () => {
         // Realizar acciones de manejo de errores, como enviar una respuesta de error al cliente
         throw {
             codRes: 500,
-            message: "ERROR EN EL SERVICIO, INTENTE MAS TARDE",
+            message: "",
           };
     }
 };
