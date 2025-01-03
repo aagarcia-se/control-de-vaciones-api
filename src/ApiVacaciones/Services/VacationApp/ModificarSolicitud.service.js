@@ -33,12 +33,21 @@ export const IngresarSolicitudService = async (data) => {
 
     return idSolicitud;
   } catch (error) {
+
     if (error.codRes === 409) {
-      const result = await IngresarSolicitudDao(data);
-      return result;
+      const idSolicitud = await IngresarSolicitudDao(data)
+
+      data.idSolicitud = idSolicitud;
+
+      // Notificar de la solicitud ingresada via Correo al coordinador de la unidad
+      await notificarSolicitudVacacionesIngresada(data);
+      
+      return idSolicitud;
     }
+
     throw error; // Mantener el throw para que el error se propague
   }
+
 };
 
 export const actualizarEstadoSolicitudService = async (data) => {
