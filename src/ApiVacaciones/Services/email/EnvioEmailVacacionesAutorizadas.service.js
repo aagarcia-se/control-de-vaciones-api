@@ -26,3 +26,30 @@ export const EnviarMailAutorizacionDeVacaciones = async (data, plantiila, buffer
       }
     });
   };
+
+
+  export const EnviarMailSolicitudDeVacaciones = async (data, plantiila, bufferPDF)=> {
+    // Detalles del correo electrónico
+    const mailOptions = {
+      from: "gestionesrrhhiga@gmail.com",
+      to: data.correoCoordinador,
+      subject: "Solicitud de vacaciones no-replay",
+      html: plantiila,
+      attachments: [
+        {
+          filename: `slvc_${data.idSolicitud}_solicitud_vacaciones.pdf`,
+          content: bufferPDF,
+          contentType: 'application/pdf' 
+        }
+      ]
+    };
+  
+    // Enviar el correo electrónico
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("Correo electrónico enviado: " + info.response);
+      }
+    });
+  };

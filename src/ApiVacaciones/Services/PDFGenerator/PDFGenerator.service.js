@@ -35,8 +35,8 @@ export const generateVacationRequestPDF = async (employeeData) => {
     doc.text("Solicitud de Vacaciones", { align: "center" });
 
     doc.moveDown(1.5);
-    doc.fontSize(bodyFontSize).text("Licenciado.");
-    doc.text("Coordinador de Recursos Humanos");
+    doc.fontSize(bodyFontSize).text(`Licenciado ${employeeData.nombreCoordinador}.`);
+    doc.text(`Coordinador de ${employeeData.coordinadorUnidad}`);
     doc.text("Presente");
     doc.moveDown(1.5);
 
