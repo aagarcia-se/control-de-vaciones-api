@@ -5,7 +5,6 @@ import { consultarCoordinadorService } from "../../Coordinadores/Coordinadores.S
 import { getSolicitudesByIdSolcitudDao } from "../../../Dao/VacationApp/GetSolicitudById.Dao.js";
 
 export const notificarSolicitudVacacionesIngresada = async (data) => {
-  console.log(data)
   try {
     //Consultar Coordinador
     const coordinador = await consultarCoordinadorService(data.unidadSolicitud);

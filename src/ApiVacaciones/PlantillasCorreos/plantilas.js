@@ -1,6 +1,10 @@
 import { formatDateToDisplay } from "../Services/Utils/DateUtils.js";
 
 const plantillaAutorizacionDeVacaciones = (data) => {
+    const estado = data?.estadoSolicitud?.toLowerCase() || "no especificado";
+    const claseEstado =  estado === "autorizadas" ? "estado-autorizada" : "estado-rechazada";
+    const estadoTexto = estado === "autorizadas" ? "AUTORIZADA" : "RECHAZADA"
+
   const html = `
          <!DOCTYPE html>
                       <html lang="es">
@@ -50,28 +54,34 @@ const plantillaAutorizacionDeVacaciones = (data) => {
                           font-size: 0.9em;
                           color: #777;
                           }
+                        .estado-autorizada {
+                        color: green;
+                        font-weight: bold;
+                        }
+                        .estado-rechazada {
+                        color: red;
+                        font-weight: bold;
+                        }
                       </style>
                       </head>
                       <body>
                       <div class="container">
                           <div class="header">
-                          Notificación de Vacaciones Autorizadas
+                          Notificación de solicitud de vacaciones
                           </div>
                           <div class="content">
                           <p>Estimado(a) <strong> ${data.nombreCompleto} </strong>,</p>
-                          <p>Nos complace informarle que su solicitud de vacaciones ha sido <strong> AUTORIZADA </strong>. A continuación se detallan los datos correspondientes:</p>
-                          <div class="info"><strong>Fecha de Inicio:</strong> ${formatDateToDisplay(
-                            data.fechaInicioVacaciones
-                          )} </div>
-                          <div class="info"><strong>Fecha Fin:</strong> ${formatDateToDisplay(
-                            data.fechaFinVacaciones
-                          )}</div>
-                          <div class="info"><strong>Día de Reintegro:</strong> ${formatDateToDisplay(
-                            data.fechaRetornoLabores
-                          )}</div>
-                          <div class="info"><strong>Días a Tomar:</strong> ${
-                            data.cantidadDiasSolicitados
-                          }</div>
+                          <p>Le informamos que su solicitud de vacaciones ha sido 
+                          <strong class="${claseEstado}">${estadoTexto}</strong>.
+                          A continuación se detallan los datos correspondientes:</p>
+                          <div class="info"><strong>Fecha de Inicio:</strong> 
+                          ${formatDateToDisplay(data.fechaInicioVacaciones)} </div>
+                          <div class="info"><strong>Fecha Fin:</strong>
+                           ${formatDateToDisplay(data.fechaFinVacaciones)}</div>
+                          <div class="info"><strong>Día de Reintegro:</strong>
+                           ${formatDateToDisplay(data.fechaRetornoLabores)}</div>
+                          <div class="info"><strong>Días a Tomar:</strong> 
+                          ${data.cantidadDiasSolicitados}</div>
                           <p>Si tiene alguna duda o necesita asistencia adicional, no dude en catactarse con su coordinador.</p>
                           </div>
                           <div class="footer">

@@ -51,6 +51,8 @@ export const IngresarSolicitudService = async (data) => {
 };
 
 export const actualizarEstadoSolicitudService = async (data) => {
+  let bufferPDF = null;
+
   try {
 
     //Autoriza la solicitud ingresada
@@ -62,18 +64,20 @@ export const actualizarEstadoSolicitudService = async (data) => {
     //Consultar Datos coordinador
     const coordinador = await consultarCoordinadorService(solicitud.unidadSolicitud);
 
-    const solicitudCompleta = {...solicitud, ...coordinador}
+    const solicitudCompleta = {...solicitud, ...coordinador, ...data}
 
     //Generar pdf de la autorizacion
-    const bufferPDF = await generateVacationRequestPDF(solicitudCompleta);
-
+    if(data.estadoSolicitud === "autorizadas"){
+      bufferPDF = await generateVacationRequestPDF(solicitudCompleta);
+    }
+    
     //Generar plantilla html para envio de correo.
-    const plantillaHtml = GenerarPlantillasCorreos("autorizacion-vacaciones", solicitud);
+    const plantillaHtml = GenerarPlantillasCorreos("autorizacion-vacaciones", solicitudCompleta);
 
     //Envio de correo solicitud autorizada
     await EnviarMailAutorizacionDeVacaciones(solicitud, plantillaHtml, bufferPDF);
 
-    return bufferPDF;
+    return result;
   } catch (error) {
     throw error; // Mantener el throw para que el error se propague
   }
