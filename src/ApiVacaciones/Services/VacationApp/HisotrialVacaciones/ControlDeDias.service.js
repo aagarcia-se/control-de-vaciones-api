@@ -1,12 +1,9 @@
 import {
-  acreditarDiasPorPeriodoDao,
   acreditarDiasPorPeriodoLoteDao,
   ActualizarDiasAcumuladosPorPeriodoDao,
   getUltiaAcreditacionDiasDao,
 } from "../../../Dao/VacationApp/HistorialVacaciones/ControlDeDias.dao.js";
 import {
-  destructurarFecha,
-  destructurarFechaActual,
   formatearFecha,
   validarFechaUltimaActualizacion,
 } from "../../Utils/DateUtils.js";
@@ -26,7 +23,7 @@ import { generarDiasAcumuladosPorPeriodo } from "./CalculoDeDias.service.js";
 export const acreditarDiasPorPeriodoService = async (data) => {
   try {
     const ultimoIngresoDeDias = await getUltiaAcreditacionDiasDao(data.idEmpleado);
-    
+
     // Validar y asignar la fecha de actualización si existe un último ingreso de días
     if (ultimoIngresoDeDias) {
       data.fechaUpdate = formatearFecha(ultimoIngresoDeDias.fechaActualizacion);
