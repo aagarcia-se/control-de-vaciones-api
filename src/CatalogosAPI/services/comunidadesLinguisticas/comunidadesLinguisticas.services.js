@@ -1,4 +1,4 @@
-import { getComunidadLinguisticaDao } from "../../dao/comunidadLinguistica/comunidadlinguistica.dao.js";
+import { getComunidadLinguisticaDao } from "../../dao/comunidadLinguistica/comunidadLinguistica.dao.js";
 
 
 export const getComunidadesLinguisticasServices = async () =>{
